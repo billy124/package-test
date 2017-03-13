@@ -1,0 +1,13 @@
+{
+    "name": "billymahmood/cms",
+    "description": "basic cms package to all users to create dynamic pages",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Billy Mahmood",
+            "email": "billy124@msn.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
