@@ -9,7 +9,7 @@ class PageController extends Controller {
     /**
      * Get a list of all pages
      * 
-     * @return type
+     * @return array
      */
     public function index() {
         $data['pages'] = [
@@ -17,13 +17,13 @@ class PageController extends Controller {
             ['title' => 'Page 2']
         ];
         
-        return view('butt::page.index', $data);
+        return view('cms::page.index', $data);
     }
     
     /**
      * Get a single page
      * 
-     * @return type
+     * @return array
      */
     public function show($page) {
         return [
