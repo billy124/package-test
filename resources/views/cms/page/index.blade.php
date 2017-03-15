@@ -11,7 +11,7 @@
             <div class="content">
                 <div class="title">
                     @foreach($pages as $page)
-                    {{ $page['title'] }} -
+                    {{ $page->title }}  --
                     <br/>
                     @endforeach
                 </div>

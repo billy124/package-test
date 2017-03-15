@@ -3,6 +3,7 @@
 namespace Butt\Cms\Controllers;
 
 use App\Http\Controllers\Controller;
+use Butt\Cms\Models\Page;
 
 class PageController extends Controller {
 
@@ -12,10 +13,7 @@ class PageController extends Controller {
      * @return array
      */
     public function index() {
-        $data['pages'] = [
-            ['title' => 'Page 1'],
-            ['title' => 'Page 2']
-        ];
+        $data['pages'] = Page::get();
         
         return view('cms::page.index', $data);
     }

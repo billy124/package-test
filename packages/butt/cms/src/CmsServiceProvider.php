@@ -13,19 +13,14 @@ class CmsServiceProvider extends ServiceProvider {
      * @return void
      */
     public function boot() {
-        // get the laravel view path
-        $viewPath = Config::get('view.paths')[0];
         
-        // set the view name space 
-        if (file_exists($viewPath . '/cms')) {
-            $this->loadViewsFrom($viewPath . '/cms', 'cms');
-        } else {
-            $this->loadViewsFrom(__DIR__ . '/views', 'cms');
-        }
+        $this->registerNamespace();
+        
 
         // publish these files : php artisan vendor:publish
         $this->publishes([
-            __DIR__ . '/views' => base_path('resources/views/cms'),
+            __DIR__ . '/Views' => base_path('resources/views/cms'),
+            __DIR__ . '/Database/migrations' => base_path('database/migrations'),
         ]);
     }
 
@@ -37,6 +32,21 @@ class CmsServiceProvider extends ServiceProvider {
     public function register() {
         include __DIR__ . '/routes.php';
         $this->app->make('Butt\Cms\Controllers\PageController');
+    }
+    
+    /**
+     * register the namespace for the views
+     */
+    protected function registerNamespace() {
+        // get the laravel view path
+        $viewPath = Config::get('view.paths')[0];
+        
+        // set the view name space 
+        if (file_exists($viewPath . '/cms')) {
+            $this->loadViewsFrom($viewPath . '/cms', 'cms');
+        } else {
+            $this->loadViewsFrom(__DIR__ . '/views', 'cms');
+        }
     }
 
 }
