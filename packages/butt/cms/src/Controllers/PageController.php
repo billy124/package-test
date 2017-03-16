@@ -13,9 +13,10 @@ class PageController extends Controller {
      * @return array
      */
     public function index() {
-        $data['pages'] = Page::get();
+        $page = New Page;
+        $data['pages'] = $page->getActivePages();
         
-        return view('cms::page.index', $data);
+        return view('cms::page.list', $data);
     }
     
     /**
@@ -23,10 +24,10 @@ class PageController extends Controller {
      * 
      * @return array
      */
-    public function show($page) {
-        return [
-            ['title' => 'Page 1']
-        ];
+    public function show($slug) {
+        $data['page'] = Page::where('slug', $slug)->first();
+        
+        return view('cms::page.show', $data);
     }
 
 }

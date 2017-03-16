@@ -17,9 +17,11 @@ class CreatePagesTable extends Migration
             $table->increments('id');
             $table->string('slug')->unique();
             $table->string('title');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->timestamp('published_at');
-            $table->string('status');
+            $table->string('status')->nullable();
+            $table->string('author')->nullable();
+            
             $table->timestamps();
             $table->softDeletes();
         });
