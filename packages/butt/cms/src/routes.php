@@ -6,6 +6,6 @@ Route::group(['namespace' => 'butt\cms\Controllers'], function() {
     Route::get('pages',  'PageController@index')->name('view.cms.page.list');  
 
     // Generic endpoint for all cmsable pages
-    Route::get('{any}',  'PageController@show')->name('view.cms.page');
+    Route::get('{any}',  'PageController@show')->where('any', '.*')->name('view.cms.page');
 
 });
