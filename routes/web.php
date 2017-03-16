@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('override', function () {
+Route::get('/', function () {
     return view('welcome');
 });
